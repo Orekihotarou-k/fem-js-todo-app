@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@font-face {
+    font-family: "Josefin Sans";
+    src: url(JosefinSans-VariableFont_wght.ttf);
+}
+
+
+/* ====================
+           root
+   ====================*/
+:root {
+    /* --clr-lt-Very-Light-Gray: #fafafa;
+    --clr-lt-Very-Light-Grayish-Blue: #e4e5f1;
+    --clr-lt-Light-Grayish-Blue: #d2d3db;
+    --clr-lt-Dark-Grayish-Blue: #9394a5;
+    --clr-lt-Very-Dark-Grayish-Blue: #484b6a;
+
+    /*  dark theme  
+    --clr-dt-Very-Dark-Blue: #161722;
+    --clr-dt-Very-Dark-Desaturated-Blue: #25273c;
+    --clr-dt-Light-Grayish-Blue: #cacde8;
+    --clr-dt-Light-Grayish-Blue-hover: #e4e5f1;
+    --clr-dt-Dark-Grayish-Blue: #777a92;
+    --clr-dt-Very-Dark-Grayish-Blue: #4d5066;
+    --clr-dt-Very-Dark-Grayish-Blue: #393a4c; */
+
+    --ff-primary: "Josefin Sans", sans-serif;
+    --fs-paragraph: 1rem;
+    --fs-title: 3rem;
+
+    --fw-400: 400;
+    --fw-700: 700;
+}
+
+
+/* ====================
+           reset
+   ====================*/
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    font-style: italic;
+    color: var(--clr-Bright-Red);
+}
+
+ul li {
+    list-style: none;
+}
+
+h1 {
+    line-height: 1.1;
+}
+
+button {
+    font: inherit;
+    color: var(--font-color);
+    background: none;
+    border: none;
+}
+
+
+/* HELPER CLASSES */
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+
+/* THEME STYLES */
+.dark-theme {
+    --bg-top-image: 0 0 url(images/bg-desktop-dark.jpg) no-repeat;
+    --main-bg: hsl(235, 21%, 11%);
+    --todo-bg: hsl(235, 24%, 19%);
+    --font-color: hsl(234, 39%, 85%);
+    --font-color-hover: #fff;
+}
+
+
+.light-theme {
+    --bg-top-image: 0 0 url(images/bg-desktop-light.jpg) no-repeat;
+    --main-bg: hsl(0, 0%, 98%);
+    --todo-bg: hsl(236, 33%, 92%);
+    --font-color: hsl(236, 9%, 61%);
+    --font-color-hover: hsl(235, 21%, 11%);
+}
+
+
+/* GENERAL STYLES */
+body {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-paragraph);
+    background: var(--bg-top-image);
+    background-color: var(--main-bg);
+    box-sizing: contain;
+    color: var(--font-color);
+}
+
+header, main {
+    width: 30rem;
+    margin-inline: auto;
+}
+
+header {
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-weight: var(--fw-700);
+    font-size: var(--fs-title);
+    color: var(--font-color);
+    letter-spacing: .5rem;
+}
+
+.theme-block #theme {
+    display: none;
+}
+
+.theme-block #theme + label::before {
+    content: '';
+    background: url(images/icon-sun.svg);
+    display: block;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.theme-block #theme:checked + label::before {
+    background: url(images/icon-moon.svg);
+}
+
+.add-new-item {
+    background: var(--todo-bg);
+    padding: 1.25rem 3rem;
+    border-radius: .3rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.add-new-item #addItem {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--font-color);
+    font: inherit;
+    padding-left: 1rem;
+}
+
+.add-new-item span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--font-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 1rem;
+}
+
+.add-new-item span:hover {
+    background: center url(images/icon-check.svg) no-repeat, linear-gradient(hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%));
+}
+
+.content {
+    background: var(--todo-bg);
+    border-radius: .3rem;
+}
+
+ul li {
+    padding: 1.25rem .6rem 1.25rem 1.25rem;
+    min-height: 50px;
+    border-bottom: 1px solid var(--font-color);
+    position: relative;
+}
+
+ul li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+}
+
+ul li label {
+    position: relative;
+    cursor: pointer;
+    padding: 2px 0 0 3rem;
+}
+
+.checkmark {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+}
+
+ul li.hidden {
+    display: none;
+}
+
+ul li input[type="checkbox"] ~ .checkmark {
+    border: 1px solid var(--font-color);
+    border-radius: 50%;
+}
+
+ul li input[type="checkbox"]:checked ~ .checkmark {
+    border: 0;
+    padding: 1px;
+    background: center url(images/icon-check.svg) no-repeat, linear-gradient(hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%));
+}
+
+ul li input[type="checkbox"]:checked ~ .text {
+    text-decoration: line-through;
+}
+
+.remove {
+    visibility: hidden;
+    background: url(images/icon-cross.svg);
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 1rem;
+}
+
+ul li:hover .remove {
+    visibility: visible;
+}
+
+.bottom-items {
+    font-size: .8rem;
+    justify-content: space-between;
+    background: var(--todo-bg);
+    border-radius: .3rem;
+    padding: 1.25rem;
+}
+
+.filter input[type="radio"] {
+    appearance: none;
+    cursor: pointer;
+}
+
+.filter label {
+    cursor: pointer;
+    padding: 0 .5rem;
+}
+
+.filter label:hover {
+    color: var(--font-color-hover);
+} 
+
+.filter input[type="radio"]:checked ~ span {
+    color: hsl(221, 62%, 52%);
+}
+
+.clear {
+    cursor: pointer;
+}
+
+
+@media (max-width: 520px) {
+    header, main {
+        width: auto;
+    }
+
+    body {
+        display: block;
+        padding: 6rem 1rem;
+    }
+
+    .bottom-items {
+        position: relative;
+    }
+
+    .filter {
+        width: 100%;
+        padding: 1.25rem;
+        border-radius: .3rem;
+        justify-content: center;
+        background: var(--todo-bg);
+        position: absolute;
+        left: 50%;
+        translate: -50% 50%;
+        bottom: -3rem;
+    }
+}
