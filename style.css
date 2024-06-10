@@ -87,7 +87,7 @@ button {
     --bg-top-image: 0 0 url(images/bg-desktop-light.jpg) no-repeat;
     --main-bg: hsl(0, 0%, 98%);
     --todo-bg: hsl(236, 33%, 92%);
-    --font-color: hsl(236, 9%, 61%);
+    --font-color:  hsl(235, 19%, 35%);
     --font-color-hover: hsl(235, 21%, 11%);
 }
 
@@ -118,7 +118,7 @@ header {
 h1 {
     font-weight: var(--fw-700);
     font-size: var(--fs-title);
-    color: var(--font-color);
+    color: #fff;
     letter-spacing: .5rem;
 }
 
